@@ -51,8 +51,8 @@ color2.addEventListener("input", backgroundColor);
 
 
 function undo() {
-  // console.log(mementos1);
-  // console.log(mementos2);
+  console.log(mementos1);
+  console.log(mementos2);
 
   const lastMemento1 = mementos1.pop();
   const lastMemento2 = mementos2.pop();
@@ -60,9 +60,13 @@ function undo() {
 
   // console.log(lastMemento1);
   // console.log(lastMemento2);
-
-  body.style.background = "linear-gradient(to right," + lastMemento1 + "," + lastMemento2 + ")";
-  h3.textContent = lastMemento1 + lastMemento2;
+  for (var i = 0; i < mementos1.length && i< mementos2.length; i++) {
+  		body.style.background = "linear-gradient(to right," + mementos1[i] + "," + mementos2[i] + ")";
+  		h3.textContent = mementos1[i] + mementos2[i];
+  		// console.log(mementos1[i]);
+  		// console.log(mementos2[i]);
+  }
+  
   if (mementos1.length < 1 && mementos2.length < 1) {
   	initial();
   	backgroundColor();
