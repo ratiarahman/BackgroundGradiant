@@ -71,6 +71,8 @@ undobtn.addEventListener("click", function undo() {
   	for (var i = 0; i < mementos1.length && i< mementos2.length; i++) {
   		body.style.background = "linear-gradient(to right," + mementos1[i] + "," + mementos2[i] + ")";
   		h3.textContent = mementos1[i] + mementos2[i];
+  		color3.value = mementos1[i];
+  		color4.value = mementos2[i];
   	}
   
   	if (mementos1.length < 1 && mementos2.length < 1) {
@@ -92,6 +94,8 @@ function redoo(){
 
 	body.style.background = "linear-gradient(to right," + array4 + "," + array6 + ")";
 	h3.textContent = array4 + array6;
+	color3.value = array4;
+	color4.value = array6;
 
 	// console.log(array4.length);
 
@@ -100,7 +104,9 @@ function redoo(){
 	// 	h3.textContent = array4[i];
 	// }
 
-	// if (array3.length < 1) {
-	// 	h3.textContent = array3[0];
+	// if (array3.length < 1 && array5.length < 1) {
+	// 	color3.value = array3[0];
+	// 	color4.value = array5[0];
+	// 	// h3.textContent = array3[0];
 	// }
 }
