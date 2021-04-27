@@ -4,9 +4,17 @@ var color2 = document.querySelector(".color2");
 var color3 = document.getElementById("demo");
 var color4 = document.getElementById("one");
 var body = document.querySelector("body");
+var undobtn = document.getElementById("undobtn");
 var mementos1 = [];
 var mementos2 = [];
-
+const redo1 = [];
+const redo2 = [];
+const lastMemento1 = [];
+const lastMemento2 = [];
+var array3;
+var array4;
+var array5;
+var array6;
 
 
 function initial(){
@@ -40,38 +48,59 @@ function random(){
 function backgroundColor(){
 	var x = body.style.background = "linear-gradient(to right," + color1.value + "," + color2.value + ")";
 	h3.textContent = x;
-	// console.log(x);	
 }
 
 backgroundColor();
-// color1.addEventListener("input", backgroundColor());
-// color2.addEventListener("input", backgroundColor());
 color1.addEventListener("input", backgroundColor);
 color2.addEventListener("input", backgroundColor);
 
 
-function undo() {
-  // console.log(mementos1);
-  // console.log(mementos2);
+undobtn.addEventListener("click", function undo() {
+ 	// console.log(mementos1);
+  	// console.log(mementos2);
 
-  const lastMemento1 = mementos1.pop();
-  const lastMemento2 = mementos2.pop();
+   	var undoValuePop1 = mementos1.pop();
+   	lastMemento1.push(undoValuePop1);
+
+   	var undoValuePop2 = mementos2.pop();
+   	lastMemento2.push(undoValuePop2);
 
 
-  // console.log(lastMemento1);
-  // console.log(lastMemento2);
-  for (var i = 0; i < mementos1.length && i< mementos2.length; i++) {
+  	// console.log(lastMemento1);
+ 	// console.log(lastMemento2);
+  	for (var i = 0; i < mementos1.length && i< mementos2.length; i++) {
   		body.style.background = "linear-gradient(to right," + mementos1[i] + "," + mementos2[i] + ")";
   		h3.textContent = mementos1[i] + mementos2[i];
-  		// console.log(mementos1[i]);
-  		// console.log(mementos2[i]);
-  }
+  	}
   
-  if (mementos1.length < 1 && mementos2.length < 1) {
-  	initial();
-  	backgroundColor();
-  }
-  // var nec = color3.value = lastMemento1 ? lastMemento1 : color3.value;
-  // console.log(nec);
-}
+  	if (mementos1.length < 1 && mementos2.length < 1) {
+  		initial();
+  		backgroundColor();
+  	}
 
+	array3 = redo1.concat(lastMemento1);
+	array5 = redo2.concat(lastMemento2);
+	// console.log(array3);
+
+})
+
+function redoo(){
+
+	array4 = array3.pop();
+	array6 = array5.pop();
+	// console.log(array4);
+
+	body.style.background = "linear-gradient(to right," + array4 + "," + array6 + ")";
+	h3.textContent = array4 + array6;
+
+	// console.log(array4.length);
+
+	// for (var i = 0; i < array4.length; i++) {
+	// 	body.style.background = array4[i];
+	// 	h3.textContent = array4[i];
+	// }
+
+	// if (array3.length < 1) {
+	// 	h3.textContent = array3[0];
+	// }
+}
