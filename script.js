@@ -4,6 +4,10 @@ var color2 = document.querySelector(".color2");
 var color3 = document.getElementById("demo");
 var color4 = document.getElementById("one");
 var body = document.querySelector("body");
+var mementos1 = [];
+var mementos2 = [];
+
+
 
 function initial(){
 	color3.value = color1.value;
@@ -17,8 +21,10 @@ function random(){
 	var x = ['#'+(Math.random()*0xFFFFFF<<0).toString(16)];
 	var y = ['#'+(Math.random()*0xFFFFFF<<0).toString(16)];
   	
-  	document.getElementById("demo").value = x;
-  	document.getElementById("one").value = y;
+  	color3.value = x;
+  	color4.value = y;
+  	mementos1.push(color3.value);
+  	mementos2.push(color4.value);
   	// console.log(x);
   	// console.log(y);
   	// console.log(x.pop());
@@ -39,21 +45,29 @@ function backgroundColor(){
 
 backgroundColor();
 // color1.addEventListener("input", backgroundColor());
-
 // color2.addEventListener("input", backgroundColor());
 color1.addEventListener("input", backgroundColor);
 color2.addEventListener("input", backgroundColor);
 
 
-function undo(){
-	// var arr = [];
- //        for (var i = 0; i < 5; i++)
- //        {
- //            arr.push(Math.floor(Math.random() * 6) + 1)
- //        }
- //        console.log(arr);
- //        arr.pop(4);
- //        console.log(arr.pop());
- 		
+function undo() {
+  // console.log(mementos1);
+  // console.log(mementos2);
 
+  const lastMemento1 = mementos1.pop();
+  const lastMemento2 = mementos2.pop();
+
+
+  // console.log(lastMemento1);
+  // console.log(lastMemento2);
+
+  body.style.background = "linear-gradient(to right," + lastMemento1 + "," + lastMemento2 + ")";
+  h3.textContent = lastMemento1 + lastMemento2;
+  if (mementos1.length < 1 && mementos2.length < 1) {
+  	initial();
+  	backgroundColor();
+  }
+  // var nec = color3.value = lastMemento1 ? lastMemento1 : color3.value;
+  // console.log(nec);
 }
+
