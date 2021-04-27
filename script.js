@@ -51,8 +51,8 @@ color2.addEventListener("input", backgroundColor);
 
 
 function undo() {
-  console.log(mementos1);
-  console.log(mementos2);
+  // console.log(mementos1);
+  // console.log(mementos2);
 
   const lastMemento1 = mementos1.pop();
   const lastMemento2 = mementos2.pop();
